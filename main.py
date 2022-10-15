@@ -35,6 +35,11 @@ def start_game():
     game_frame.pack(expand=True, fill=BOTH)
     menu_frame.pack_forget()
 
+# function to go into instructions
+def start_instructions():
+    menu_frame.pack_forget()
+    game_frame.pack_forget()
+    how_to_play_frame.pack(expand=True, fill=BOTH)
 
 # create tkinter object, disable resize
 root = Tk()
@@ -79,15 +84,21 @@ how_to_button = Button(
     image=how_to_icon,
     bg = "#E8F4EA",
     borderwidth=0,
-    command=lambda: menu_frame.pack_forget()) #Change this later
+    command=lambda: start_instructions()) #Change this later
 how_to_button.pack(pady = 20)
 
 # put how to play button near middle
 how_to_button.place(relx=0.366, rely=0.625, anchor='center')
 
 
+# frame for instruction page
+how_to_play_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
+how_to_imgfile = Image.open('./assets/game_instructions.png')
+how_to_imgfile = how_to_imgfile.resize((1280, 720))
 
-
+how_to_bgimg = ImageTk.PhotoImage(how_to_imgfile)
+how_to_lablebgimg = tk.Label(how_to_play_frame, image=how_to_bgimg)
+how_to_lablebgimg.pack()
 
 
 game_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
