@@ -4,7 +4,7 @@
 
 Geoguesser game but with UTSC locations instead
 
-![Screenshot of main game screen](assets/home_page.png?raw=true "Main Game Screen")
+![Screenshot of main game screen](assets/home_page.jpg?raw=true "Main Game Screen")
 ![Screenshot of gameover screen](assets/gameover.png?raw=true "Gameover Screen")
 
 ## Usage/Installation
