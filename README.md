@@ -15,7 +15,7 @@ git clone https://github.com/conrad-mo/geoguesser-utsc.git
 
 cd into the directory
 
-Run the .py file
+Run the main.py file
 
 ## Contributing
 
