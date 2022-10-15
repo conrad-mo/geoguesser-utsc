@@ -25,7 +25,9 @@ def get_random_picture(lst: List[int]) -> int:
        removes it from lst
 
     """
+    
     random_num = random.choice(lst)
     lst.remove(random_num)
+    return random_num
   
     
