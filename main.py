@@ -16,28 +16,31 @@ root = Tk()
 root.resizable(False, False)
 
 # assign size of root and create a bg variable
-root.geometry("532x572")
+root.geometry("1200x700")
 
 # main menu frame
 menu_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
 menu_frame.pack(expand=True, fill=BOTH)
 
-# main menu title, and place it at the top
-menu_title = Label(menu_frame,
-                   text="UTSC Geoguessr",
-                   font=("Helvetica", 14))
-menu_title.place(relx=0.5, rely=0.03, anchor='center')
+start_sample= (Image.open('./assets/click_to_start.png'))
 
+background_img = Image.open("./assets/home_page.jpg")
+backgroundmenu= background_img.resize((1200,700), Image.ANTIALIAS)
+backgroundmenu= ImageTk.PhotoImage(backgroundmenu)
+
+# Create a Label Widget to display the text or Image
+label = Label(menu_frame, image = backgroundmenu)
+label.pack()
 # main menu start button:
-img= (Image.open('./assets/click_to_start.png'))
-start_icon= img.resize((125,50), Image.ANTIALIAS)
+start_sample= (Image.open('./assets/click_to_start.png'))
+start_icon= start_sample.resize((230,100), Image.ANTIALIAS)
 start_icon= ImageTk.PhotoImage(start_icon)
 start_button = Button(
     menu_frame,
     image=start_icon,
     command=lambda: menu_frame.pack_forget())
 # put button near middle
-start_button.place(relx=0.5, rely=0.3, anchor='center')
+start_button.place(relx=0.12, rely=0.5, anchor='center')
 
 # main menu quit button:
 quit_button = Button(
