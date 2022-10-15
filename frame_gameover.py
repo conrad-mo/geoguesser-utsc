@@ -44,11 +44,18 @@ replay_button_img = (Image.open('./assets/Play_Again.png'))
 replay_icon = replay_button_img.resize((260, 100), Image.ANTIALIAS)
 replay_icon = ImageTk.PhotoImage(replay_icon)
 
+
+# function to replay game
+def replay_game():
+    gameover_frame.forget()
+    # put the code to change to game frame here
+
+
 # create replay button
 replay_button = Button(
     gameover_frame,
     image=replay_icon,
-    command=lambda: gameover_frame.forget())
+    command=lambda: replay_game())
 replay_button.place(relx=0.45, rely=0.85, anchor='center')
 
 root.mainloop()
