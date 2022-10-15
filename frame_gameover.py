@@ -55,6 +55,8 @@ def replay_game():
 replay_button = Button(
     gameover_frame,
     image=replay_icon,
+    background='#E8F4EA',
+    borderwidth=0,
     command=lambda: replay_game())
 replay_button.place(relx=0.45, rely=0.85, anchor='center')
 
