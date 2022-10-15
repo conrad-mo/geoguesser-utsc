@@ -58,13 +58,5 @@ how_to_button.pack(pady = 20)
 # put how to play button near middle
 how_to_button.place(relx=0.37, rely=0.62, anchor='center')
 
-# main menu quit button:
-quit_button = Button(
-    menu_frame,
-    text="Quit",
-    command=lambda: root.quit())
-# put button below start button
-quit_button.place(relx=0.5, rely=0.5, anchor='center')
-
 # run tkinter
 root.mainloop()
