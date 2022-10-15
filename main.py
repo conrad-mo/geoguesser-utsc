@@ -58,30 +58,32 @@ label = Label(menu_frame, image = backgroundmenu)
 label.pack()
 # main menu start button:
 start_sample= (Image.open('./assets/click_to_start.png'))
-start_icon= start_sample.resize((259, 75), Image.ANTIALIAS)
+start_icon= start_sample.resize((261, 77), Image.ANTIALIAS)
 start_icon= ImageTk.PhotoImage(start_icon)
 start_button = Button(
     menu_frame,
     image=start_icon,
+    borderwidth=0,
     bg = "#E8F4EA",
     command=lambda: start_game())
 start_button.pack(pady = 20)
 # put start button near middle
-start_button.place(relx=0.139, rely=0.62, anchor='center')
+start_button.place(relx=0.1317, rely=0.625, anchor='center')
 
 # how to play button
 how_to_sample= (Image.open('./assets/how_to_play.png'))
-how_to_icon= how_to_sample.resize((259, 75), Image.ANTIALIAS)
+how_to_icon= how_to_sample.resize((260, 76), Image.ANTIALIAS)
 how_to_icon= ImageTk.PhotoImage(how_to_icon)
 how_to_button = Button(
     menu_frame,
     image=how_to_icon,
     bg = "#E8F4EA",
+    borderwidth=0,
     command=lambda: menu_frame.pack_forget()) #Change this later
 how_to_button.pack(pady = 20)
 
 # put how to play button near middle
-how_to_button.place(relx=0.37, rely=0.62, anchor='center')
+how_to_button.place(relx=0.366, rely=0.625, anchor='center')
 
 
 
@@ -101,19 +103,25 @@ lablebgimg.pack()
 # timer text, at the top
 timer = Label(game_frame,
                    text=time_left,
-                   font=("Helvetica", 14))
-timer.place(relx=0.5, rely=0.03, anchor='center')
+                   font=("Leelawadee", 14, "bold"),
+                   background = "white",
+                   foreground = "#628020")
+timer.place(relx=0.452, rely=0.2451, anchor='center')
 # timer text, at the top
 score_label = Label(game_frame,
                    text=current_photo_id,
-                   font=("Helvetica", 14))
-score_label.place(relx=0.5, rely=0.8, anchor='s')
+                   font=("Leelawadee", 20, "bold"),
+                   foreground="#628020",
+                   background = "#E8F4EA")
+score_label.place(relx=0.55, rely=0.183, anchor='s')
 
 
 round_label = Label(game_frame,
                    text='12324t35y',
-                   font=("Helvetica", 14))
-round_label.place(relx=0.5, rely=0.3, anchor='center')
+                   font=("Leelawadee", 24, "bold"),
+                   foreground="#628020",
+                   background="#E8F4EA")
+round_label.place(relx=0.58, rely=0.07, anchor='center')
 
 
 # Create an object of tkinter ImageTk
@@ -210,31 +218,32 @@ def next_round():
     global time_left
     global game_round
 
-    current_photo_id = gf.get_random_picture(unused_photos)
-    score_label['text'] = score
-    
-    # Create an object of tkinter ImageTk
-    img_file2 = Image.open("./assets/Photos/" + str(current_photo_id) + ".jpg")
-    
-    img_file2 = img_file2.resize((600,600))
-    img_file2 = img_file2.rotate(-90)
-    img_file2 = img_file2.resize((480,640))
-    
-    img2 = ImageTk.PhotoImage(img_file2)
-    photo_label.configure(image=img2)
-    photo_label.image = img2
-    
-    time_left = 30
-    
-    game_round += 1
-    round_label['text'] = game_round
-    
-
-    countdown(game_round)
-    
-    
+    game_round += 1        
     if(game_round > const.MAX_ROUND):
         game_frame.after(1000, game_end)
+    else:
+    
+        current_photo_id = gf.get_random_picture(unused_photos)
+        score_label['text'] = score
+        
+        # Create an object of tkinter ImageTk
+        img_file2 = Image.open("./assets/Photos/" + str(current_photo_id) + ".jpg")
+        
+        img_file2 = img_file2.resize((600,600))
+        img_file2 = img_file2.rotate(-90)
+        img_file2 = img_file2.resize((480,640))
+        
+        img2 = ImageTk.PhotoImage(img_file2)
+        photo_label.configure(image=img2)
+        photo_label.image = img2
+        
+        time_left = 30
+        
+        
+        round_label['text'] = game_round
+        
+    
+        countdown(game_round)
         
 
 
@@ -269,18 +278,18 @@ final_score = '2'
 score_label_end = Label(
     gameover_frame,
     height=1,
-    width=1,
+    width=5,
     text=final_score,
     borderwidth=0,
     foreground='#628060',
     background='white'
     )
-score_label_end.place(relx=0.45, rely=0.55, anchor='center')
-score_label_end.config(font=("Times New Roman", 50, 'bold'))
+score_label_end.place(relx=0.55, rely=0.55, anchor='center')
+score_label_end.config(font=("Leelawadee", 50, 'bold'))
 
 # replay button image
 replay_button_img = (Image.open('./assets/Play_Again.png'))
-replay_icon = replay_button_img.resize((260, 100), Image.ANTIALIAS)
+replay_icon = replay_button_img.resize((344, 100), Image.ANTIALIAS)
 replay_icon = ImageTk.PhotoImage(replay_icon)
 
 

@@ -13,7 +13,7 @@ unused_photos = list(range(len(db.coords)))
 time_left = 30
 current_photo_id = 0
 score = 0
-game_round = 0
+game_round = 1
 
 # create tkinter object, disable resize
 root = Tk()
@@ -133,6 +133,7 @@ def next_round():
     global game_round
     
     game_round += 1
+    print(game_round)
     if(game_round > const.MAX_ROUND):
         game_end()
     else:
