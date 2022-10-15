@@ -1,5 +1,7 @@
 from typing import List
 import math
+import database as DB
+import random
 
 def calculate_score(x: int, y: int, photo_id: int) -> int:
     """Return the score given the coordinates from x, y, and photo_id.
@@ -12,12 +14,15 @@ def calculate_score(x: int, y: int, photo_id: int) -> int:
 
 
 def get_photo_coords(photo_id: int) -> List[int]:
+    """Returns the coordinates of the photo given index photo_id
+        
     """
-    """
-    pass
+    return DB.coords [photo_id]
 
 
 def get_random_picture(lst: List[int]) -> int:
     """
     """
-    pass
+    #choosing a random # from list 
+    # delete that number from the list
+    
