@@ -27,17 +27,18 @@ background_label.pack()
 # variable to display final score
 final_score = '2'
 
-# create and place textbox
-score_textbox = Label(
+# create and place label for score
+score_label = Label(
     gameover_frame,
     height=1,
     width=1,
     text=final_score,
     borderwidth=0,
+    foreground='#628060',
     background='white'
     )
-score_textbox.place(relx=0.45, rely=0.55, anchor='center')
-score_textbox.config(font=("Times New Roman", 50, 'bold'))
+score_label.place(relx=0.45, rely=0.55, anchor='center')
+score_label.config(font=("Times New Roman", 50, 'bold'))
 
 # replay button image
 replay_button_img = (Image.open('./assets/Play_Again.png'))
