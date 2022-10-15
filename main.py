@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from PIL import Image,ImageTk
 
 # FUNCTIONS
 
@@ -28,12 +29,15 @@ menu_title = Label(menu_frame,
 menu_title.place(relx=0.5, rely=0.03, anchor='center')
 
 # main menu start button:
+img= (Image.open('./assets/click_to_start.png'))
+start_icon= img.resize((125,50), Image.ANTIALIAS)
+start_icon= ImageTk.PhotoImage(start_icon)
 start_button = Button(
     menu_frame,
-    text="Start Playing!",
+    image=start_icon,
     command=lambda: menu_frame.pack_forget())
 # put button near middle
-start_button.place(relx=0.5, rely=0.4, anchor='center')
+start_button.place(relx=0.5, rely=0.3, anchor='center')
 
 # main menu quit button:
 quit_button = Button(
