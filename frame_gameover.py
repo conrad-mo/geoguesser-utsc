@@ -41,7 +41,7 @@ score_textbox.config(font=("Times New Roman", 50, 'bold'))
 
 # replay button image
 replay_button_img = (Image.open('./assets/Play_Again.png'))
-replay_icon = replay_button_img.resize((230, 100), Image.ANTIALIAS)
+replay_icon = replay_button_img.resize((260, 100), Image.ANTIALIAS)
 replay_icon = ImageTk.PhotoImage(replay_icon)
 
 # create replay button
@@ -49,6 +49,6 @@ replay_button = Button(
     gameover_frame,
     image=replay_icon,
     command=lambda: gameover_frame.forget())
-replay_button.place(relx=0.5, rely=0.8, anchor='center')
+replay_button.place(relx=0.45, rely=0.85, anchor='center')
 
 root.mainloop()
