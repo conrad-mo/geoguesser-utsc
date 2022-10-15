@@ -2,6 +2,14 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 
+# FUNCTIONS
+
+
+# function to start game when start button pressed
+def start_game():
+    menu_frame.pack_forget()
+
+
 # create tkinter object, disable resize
 root = Tk()
 root.resizable(False, False)
@@ -22,14 +30,18 @@ menu_title.place(relx=0.5, rely=0.03, anchor='center')
 # main menu start button:
 start_button = Button(
     menu_frame,
-    text="Start Playing!")
-start_button.place(relx=0.5, rely=0.1, anchor='center')
+    text="Start Playing!",
+    command=lambda: menu_frame.pack_forget())
+# put button near middle
+start_button.place(relx=0.5, rely=0.4, anchor='center')
 
 # main menu quit button:
 quit_button = Button(
     menu_frame,
-    text="Quit")
-quit_button.place(relx=0.5, rely=0.175, anchor='center')
+    text="Quit",
+    command=lambda: root.quit())
+# put button below start button
+quit_button.place(relx=0.5, rely=0.5, anchor='center')
 
 # run tkinter
 root.mainloop()
