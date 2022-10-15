@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 import database as db
 import constants as const
 import game_functions as gf
-
+import time
 
 # Variables
 unused_photos = list(range(len(db.coords)))
@@ -110,6 +110,12 @@ score_label = Label(game_frame,
 score_label.place(relx=0.5, rely=0.8, anchor='s')
 
 
+round_label = Label(game_frame,
+                   text='12324t35y',
+                   font=("Helvetica", 14))
+round_label.place(relx=0.5, rely=0.3, anchor='center')
+
+
 # Create an object of tkinter ImageTk
 img_file = Image.open("./assets/map.jpg")
 
@@ -153,11 +159,14 @@ def countdown(rround: int):
         game_end()
     else:
         timer['text'] = time_left
+        print(time_left)
         timer.after(1000, lambda: countdown(rround))
     
 
 def game_end():
+    time.sleep(1)
     gameover_frame.pack(expand=True, fill=BOTH)
+    score_label_end['text'] = score
     game_frame.pack_forget()
 
 def guess(x: int, y: int):
@@ -171,14 +180,14 @@ def guess(x: int, y: int):
     
     score += gf.calculate_score(x, y, current_photo_id)
 
-    imgpointfile = Image.open("./assets/point.png")
+    imgpointfile = Image.open("./assets/guess_pin.png")
     imgpointfile = imgpointfile.resize((25, 25))
     
     img_point = ImageTk.PhotoImage(imgpointfile)
     point_label = Label(map_label, image = img_point)
     point_label.place(relx=x/450, rely=y/670, anchor='center')
 
-    imggoalfile = Image.open("./assets/goal.png")
+    imggoalfile = Image.open("./assets/finish_flag.png")
     imggoalfile = imggoalfile.resize((25, 25))
     
     img_goal = ImageTk.PhotoImage(imggoalfile)
@@ -200,28 +209,32 @@ def next_round():
     global unused_photos
     global time_left
     global game_round
+
+    current_photo_id = gf.get_random_picture(unused_photos)
+    score_label['text'] = score
+    
+    # Create an object of tkinter ImageTk
+    img_file2 = Image.open("./assets/Photos/" + str(current_photo_id) + ".jpg")
+    
+    img_file2 = img_file2.resize((600,600))
+    img_file2 = img_file2.rotate(-90)
+    img_file2 = img_file2.resize((480,640))
+    
+    img2 = ImageTk.PhotoImage(img_file2)
+    photo_label.configure(image=img2)
+    photo_label.image = img2
+    
+    time_left = 30
     
     game_round += 1
+    round_label['text'] = game_round
+    
+
+    countdown(game_round)
+    
+    
     if(game_round > const.MAX_ROUND):
-        game_end()
-    else:
-        current_photo_id = gf.get_random_picture(unused_photos)
-        score_label['text'] = score
-        
-        # Create an object of tkinter ImageTk
-        img_file2 = Image.open("./assets/Photos/" + str(current_photo_id) + ".jpg")
-        
-        img_file2 = img_file2.resize((600,600))
-        img_file2 = img_file2.rotate(-90)
-        img_file2 = img_file2.resize((480,640))
-        
-        img2 = ImageTk.PhotoImage(img_file2)
-        photo_label.configure(image=img2)
-        photo_label.image = img2
-        
-        time_left = 30
-        
-        countdown(game_round)
+        game_frame.after(1000, game_end)
         
 
 
@@ -242,7 +255,7 @@ gameover_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width(
 
 # set background for game over screen
 gameover_image = Image.open('./assets/UTSC_Geo-Guesser.png')
-gameover_bg = gameover_image.resize((1200, 700), Image.ANTIALIAS)
+gameover_bg = gameover_image.resize((1280, 720), Image.ANTIALIAS)
 gameover_bg = ImageTk.PhotoImage(gameover_bg)
 
 # assign game over image to a label
