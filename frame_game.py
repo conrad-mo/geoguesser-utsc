@@ -166,6 +166,7 @@ def callback(e):
     guess(x,y)
 map_label.bind('<Button-1>',callback)
 
+
 # assign size of root and create a bg variable
 root.geometry("1280x720")
 
