@@ -15,7 +15,7 @@ Geoguesser game but with UTSC locations instead
 git clone https://github.com/conrad-mo/geoguesser-utsc.git
 ```
 
-2. Please install pillow via pip
+2. Install pillow via pip
 
 3. cd into the directory
 
