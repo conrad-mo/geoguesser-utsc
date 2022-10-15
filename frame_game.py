@@ -23,7 +23,7 @@ root.resizable(False, False)
 game_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
 game_frame.pack(expand=True, fill=BOTH)
 
-bgimgfile = Image.open('./assets/Game_Screen.png')
+bgimgfile = Image.open('./assets/round_1.png')
 bgimgfile = bgimgfile.resize((1280, 720))
 
 bgimg = ImageTk.PhotoImage(bgimgfile)
