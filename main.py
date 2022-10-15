@@ -39,6 +39,7 @@ start_button = Button(
     menu_frame,
     image=start_icon,
     bg = "#E8F4EA",
+    borderwidth=0,
     command=lambda: menu_frame.pack_forget())
 start_button.pack(pady = 20)
 # put start button near middle
@@ -52,6 +53,7 @@ how_to_button = Button(
     menu_frame,
     image=how_to_icon,
     bg = "#E8F4EA",
+    borderwidth=0,
     command=lambda: menu_frame.pack_forget()) #Change this later
 how_to_button.pack(pady = 20)
 
