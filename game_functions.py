@@ -10,7 +10,7 @@ def calculate_score(x: int, y: int, photo_id: int) -> int:
     distance = math.sqrt((x - get_photo_coords(photo_id)[0]) ** 2 + (y - 
     get_photo_coords(photo_id)[1]) ** 2)
     
-    return round(1000 / distance, 2)
+    return round(1000 // distance, 2)
 
 
 def get_photo_coords(photo_id: int) -> List[int]:
