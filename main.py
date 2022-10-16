@@ -46,6 +46,13 @@ def start_instructions():
     game_frame.pack_forget()
     how_to_play_frame.pack(expand=True, fill=BOTH)
 
+
+# function to return to main menu
+def return_main_menu():
+    how_to_play_frame.forget()
+    menu_frame.pack(expand=True, fill=BOTH)
+
+
 # create tkinter object, disable resize
 root = Tk()
 root.resizable(False, False)
@@ -105,6 +112,20 @@ how_to_bgimg = ImageTk.PhotoImage(how_to_imgfile)
 how_to_lablebgimg = tk.Label(how_to_play_frame, image=how_to_bgimg)
 how_to_lablebgimg.pack()
 
+# return to main menu button
+return_sample= (Image.open('./assets/return_button.png'))
+return_icon= return_sample.resize((260, 76), Image.ANTIALIAS)
+return_icon= ImageTk.PhotoImage(return_icon)
+return_button = Button(
+    how_to_play_frame,
+    image=return_icon,
+    bg = "#E8F4EA",
+    borderwidth=0,
+    command=lambda: return_main_menu()) #Change this later
+return_button.pack(pady = 20)
+
+# place return button
+return_button.place(relx=0.8, rely=0.1, anchor='center')
 
 game_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
 
