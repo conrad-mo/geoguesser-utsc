@@ -114,7 +114,7 @@ how_to_lablebgimg.pack()
 
 # return to main menu button
 return_sample= (Image.open('./assets/return_button.png'))
-return_icon= return_sample.resize((260, 76), Image.ANTIALIAS)
+return_icon= return_sample.resize((425, 85), Image.ANTIALIAS)
 return_icon= ImageTk.PhotoImage(return_icon)
 return_button = Button(
     how_to_play_frame,
@@ -125,7 +125,7 @@ return_button = Button(
 return_button.pack(pady = 20)
 
 # place return button
-return_button.place(relx=0.8, rely=0.1, anchor='center')
+return_button.place(relx=0.75, rely=0.865, anchor='center')
 
 game_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
 
