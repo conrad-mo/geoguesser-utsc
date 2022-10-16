@@ -20,6 +20,11 @@ game_round = 0
 
 # function to reset all game info
 def reset_gamestate():
+    global unused_photos
+    global time_left
+    global current_photo_id
+    global score
+    global game_round
     unused_photos = list(range(len(db.coords)))
     time_left = 30
     current_photo_id = 0
@@ -40,6 +45,13 @@ def start_instructions():
     menu_frame.pack_forget()
     game_frame.pack_forget()
     how_to_play_frame.pack(expand=True, fill=BOTH)
+
+
+# function to return to main menu
+def return_main_menu():
+    how_to_play_frame.forget()
+    menu_frame.pack(expand=True, fill=BOTH)
+
 
 # create tkinter object, disable resize
 root = Tk()
@@ -100,6 +112,20 @@ how_to_bgimg = ImageTk.PhotoImage(how_to_imgfile)
 how_to_lablebgimg = tk.Label(how_to_play_frame, image=how_to_bgimg)
 how_to_lablebgimg.pack()
 
+# return to main menu button
+return_sample= (Image.open('./assets/return_button.png'))
+return_icon= return_sample.resize((260, 76), Image.ANTIALIAS)
+return_icon= ImageTk.PhotoImage(return_icon)
+return_button = Button(
+    how_to_play_frame,
+    image=return_icon,
+    bg = "#E8F4EA",
+    borderwidth=0,
+    command=lambda: return_main_menu()) #Change this later
+return_button.pack(pady = 20)
+
+# place return button
+return_button.place(relx=0.8, rely=0.1, anchor='center')
 
 game_frame = Frame(root, height=root.winfo_height(), width=root.winfo_width())
 
@@ -188,6 +214,14 @@ def game_end():
     score_label_end['text'] = score
     game_frame.pack_forget()
 
+imgpointfile = Image.open("./assets/guess_pin.png")
+img_point = imgpointfile.resize((25, 25), Image.ANTIALIAS)
+img_point = ImageTk.PhotoImage(img_point)
+
+imggoalfile = Image.open("./assets/finish_flag.png")
+imggoalfile = imggoalfile.resize((25, 25))
+img_goal = ImageTk.PhotoImage(imggoalfile)
+
 def guess(x: int, y: int):
     """Update score given the guessed coordinates x and y.
     Then call next round.img2 = ImageTk.PhotoImage(Image.open(path2))
@@ -196,20 +230,13 @@ def guess(x: int, y: int):
     """
     global score
     global current_photo_id
-    
+    global img_point
+    global img_goal
     score += gf.calculate_score(x, y, current_photo_id)
 
-    imgpointfile = Image.open("./assets/guess_pin.png")
-    imgpointfile = imgpointfile.resize((25, 25))
-    
-    img_point = ImageTk.PhotoImage(imgpointfile)
-    point_label = Label(map_label, image = img_point)
+    point_label = Label(map_label, image=img_point)
     point_label.place(relx=x/450, rely=y/670, anchor='center')
 
-    imggoalfile = Image.open("./assets/finish_flag.png")
-    imggoalfile = imggoalfile.resize((25, 25))
-    
-    img_goal = ImageTk.PhotoImage(imggoalfile)
     goal_label = Label(map_label, image = img_goal)
     goal_label.place(relx = gf.get_photo_coords(current_photo_id)[0]/450, rely = gf.get_photo_coords(current_photo_id)[1]/670, anchor='center')    
     
@@ -307,6 +334,8 @@ replay_icon = ImageTk.PhotoImage(replay_icon)
 # function to replay game
 def replay_game():
     gameover_frame.forget()
+    reset_gamestate()
+    menu_frame.pack()
     # put the code to change to game frame here
 
 
