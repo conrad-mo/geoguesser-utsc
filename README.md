@@ -1,5 +1,6 @@
 # Geoguesser UTSC Edition
 ![GitHub issues](https://img.shields.io/github/issues/conrad-mo/geoguesser-utsc.svg)
+![GitHub Contributors](https://img.shields.io/github/contributors/conrad-mo/geoguesser-utsc.svg)
 ![GitHub size](https://img.shields.io/github/repo-size/conrad-mo/geoguesser-utsc.svg)
 
 Geoguesser game but with UTSC locations instead
