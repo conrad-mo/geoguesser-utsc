@@ -214,6 +214,14 @@ def game_end():
     score_label_end['text'] = score
     game_frame.pack_forget()
 
+imgpointfile = Image.open("./assets/guess_pin.png")
+img_point = imgpointfile.resize((25, 25), Image.ANTIALIAS)
+img_point = ImageTk.PhotoImage(img_point)
+
+imggoalfile = Image.open("./assets/finish_flag.png")
+imggoalfile = imggoalfile.resize((25, 25))
+img_goal = ImageTk.PhotoImage(imggoalfile)
+
 def guess(x: int, y: int):
     """Update score given the guessed coordinates x and y.
     Then call next round.img2 = ImageTk.PhotoImage(Image.open(path2))
@@ -222,20 +230,13 @@ def guess(x: int, y: int):
     """
     global score
     global current_photo_id
-    
+    global img_point
+    global img_goal
     score += gf.calculate_score(x, y, current_photo_id)
 
-    imgpointfile = Image.open("./assets/guess_pin.png")
-    imgpointfile = imgpointfile.resize((25, 25))
-    
-    img_point = ImageTk.PhotoImage(imgpointfile)
-    point_label = Label(map_label, image = img_point)
+    point_label = Label(map_label, image=img_point)
     point_label.place(relx=x/450, rely=y/670, anchor='center')
 
-    imggoalfile = Image.open("./assets/finish_flag.png")
-    imggoalfile = imggoalfile.resize((25, 25))
-    
-    img_goal = ImageTk.PhotoImage(imggoalfile)
     goal_label = Label(map_label, image = img_goal)
     goal_label.place(relx = gf.get_photo_coords(current_photo_id)[0]/450, rely = gf.get_photo_coords(current_photo_id)[1]/670, anchor='center')    
     
