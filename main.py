@@ -20,6 +20,11 @@ game_round = 0
 
 # function to reset all game info
 def reset_gamestate():
+    global unused_photos
+    global time_left
+    global current_photo_id
+    global score
+    global game_round
     unused_photos = list(range(len(db.coords)))
     time_left = 30
     current_photo_id = 0
@@ -307,6 +312,8 @@ replay_icon = ImageTk.PhotoImage(replay_icon)
 # function to replay game
 def replay_game():
     gameover_frame.forget()
+    reset_gamestate()
+    menu_frame.pack()
     # put the code to change to game frame here
 
 
