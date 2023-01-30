@@ -18,9 +18,15 @@ git clone https://github.com/conrad-mo/geoguesser-utsc.git
 
 2. Install pillow via pip
 
-3. cd into the directory
+```
+pip install pillow
+```
 
-4. Run the main.py file
+3. Check you have tkinter installed from python (Tkinter should be preinstalled on unix-based systems and should be installed via python initial installation on windows)
+
+4. cd into the directory
+
+5. Run the main.py file
 
 ## Troubleshooting
 
